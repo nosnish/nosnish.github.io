@@ -1,11 +1,90 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>시작</title>
+  <title>메뉴와 서브메뉴</title>
+  <style>
+    /* CSS 스타일링 */
+    .menu {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      background-color: #f1f1f1;
+    }
+
+    .menu li {
+      display: inline-block;
+    }
+
+    .menu li a {
+      display: block;
+      padding: 10px 20px;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .menu li:hover {
+      background-color: #ddd;
+    }
+
+    .submenu {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+    }
+
+    .menu li:hover .submenu {
+      display: block;
+    }
+
+    .submenu li {
+      display: block;
+    }
+
+    .submenu li a {
+      padding: 10px 20px;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
-    시작
+  <ul class="menu">
+    <li><a href="#">HTML</a></li>
+    <li><a href="#">메뉴 2  </a></li>
+    <li>
+      <a href="#">메뉴 3</a>
+      <ul class="submenu">
+        <li><a href="#">서브메뉴 1</a></li>
+        <li><a href="#">서브메뉴 2</a></li>
+        <li><a href="#">서브메뉴 3</a></li>
+        <li><a href="#">서브메뉴 4</a></li>
+        <li><a href="#">서브메뉴 5</a></li>
+      </ul>
+    </li>
+    <li><a href="#">메뉴 4</a></li>
+    <li><a href="#">메뉴 5</a></li>
+  </ul>
+
+  <script>
+    // JavaScript로 서브메뉴의 표시 및 숨김 처리
+    var menuItems = document.querySelectorAll('.menu li');
+
+    for (var i = 0; i < menuItems.length; i++) {
+      menuItems[i].addEventListener('mouseover', showSubmenu);
+      menuItems[i].addEventListener('mouseout', hideSubmenu);
+    }
+
+    function showSubmenu() {
+      if (this.querySelector('.submenu')) {
+        this.querySelector('.submenu').style.display = 'block';
+      }
+    }
+
+    function hideSubmenu() {
+      if (this.querySelector('.submenu')) {
+        this.querySelector('.submenu').style.display = 'none';
+      }
+    }
+  </script>
 </body>
 </html>
